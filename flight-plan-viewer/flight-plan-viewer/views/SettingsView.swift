@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var simbriefUsername: String = ""
+    @AppStorage("username.simbrief") private var simbriefUsername: String = ""
     
     var body: some View {
         VStack {
@@ -20,6 +20,12 @@ struct SettingsView: View {
             
             Button {
                 print("button")
+                let defaults = UserDefaults.standard
+                
+                defaults.set(
+                    simbriefUsername,
+                    forKey: "username.simbrief"
+                )
             } label: {
                 Text("Save")
             }
