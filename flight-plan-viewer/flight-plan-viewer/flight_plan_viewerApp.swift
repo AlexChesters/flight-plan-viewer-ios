@@ -11,7 +11,7 @@ import SwiftUI
 struct flight_plan_viewerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }
