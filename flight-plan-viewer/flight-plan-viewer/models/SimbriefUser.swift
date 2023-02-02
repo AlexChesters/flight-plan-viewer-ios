@@ -8,5 +8,13 @@
 import Foundation
 
 struct SimbriefUser {
-    let pilotId: String
+    var pilotId: String?
+    
+    init() {
+        let defaults = UserDefaults.standard
+        
+        guard let simbriefUsernameFromDefaults = defaults.string(forKey: "username.simbrief") else { return }
+        
+        self.pilotId = simbriefUsernameFromDefaults
+    }
 }

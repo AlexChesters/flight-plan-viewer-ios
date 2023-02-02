@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct HomeView: View {
+    @EnvironmentObject var userController: UserController
+    
     var body: some View {
         VStack {
             Spacer()
             
-            Text("Hello, world!")
+            Text(userController.simbriefUser.pilotId ?? "Pilot ID not set")
             
             Spacer()
             

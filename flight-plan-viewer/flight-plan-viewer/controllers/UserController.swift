@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct UserController {
-    var simbriefUser: SimbriefUser?
+class UserController: ObservableObject {
+    @Published var simbriefUser: SimbriefUser = SimbriefUser()
 }

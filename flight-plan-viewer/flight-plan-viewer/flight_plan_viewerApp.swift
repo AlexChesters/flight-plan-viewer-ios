@@ -9,18 +9,11 @@ import SwiftUI
 
 @main
 struct flight_plan_viewerApp: App {
+    @StateObject private var userController = UserController()
+    
     var body: some Scene {
         WindowGroup {
-            TabView {
-                HomeView()
-                    .tabItem {
-                        Label("Home", systemImage: "house")
-                    }
-                SettingsView()
-                    .tabItem {
-                        Label("Settings", systemImage: "gear")
-                    }
-            }
+            MainView().environmentObject(userController)
         }
     }
 }
