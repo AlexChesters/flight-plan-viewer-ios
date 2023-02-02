@@ -31,6 +31,8 @@ struct SettingsView: View {
             } label: {
                 Text("Save")
             }
+            
+            Divider()
         }
         .padding()
     }
