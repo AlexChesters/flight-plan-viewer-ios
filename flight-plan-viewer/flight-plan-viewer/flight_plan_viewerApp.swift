@@ -16,7 +16,7 @@ struct flight_plan_viewerApp: App {
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
-                HomeView()
+                SettingsView()
                     .tabItem {
                         Label("Settings", systemImage: "gear")
                     }
