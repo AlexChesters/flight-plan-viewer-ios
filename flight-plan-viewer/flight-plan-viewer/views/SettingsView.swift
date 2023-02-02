@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+fileprivate let SIMBRIEF_USER_KEY = "username.simbrief"
+
 struct SettingsView: View {
-    @AppStorage("username.simbrief") private var simbriefUsername: String = ""
+    @AppStorage(SIMBRIEF_USER_KEY) private var simbriefUsername: String = ""
     
     var body: some View {
         VStack {
@@ -24,7 +26,7 @@ struct SettingsView: View {
                 
                 defaults.set(
                     simbriefUsername,
-                    forKey: "username.simbrief"
+                    forKey: SIMBRIEF_USER_KEY
                 )
             } label: {
                 Text("Save")
