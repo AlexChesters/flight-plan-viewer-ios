@@ -11,6 +11,7 @@ struct SimbriefView: View {
     @EnvironmentObject var userController: UserController
     @State var flightPlan: FlightPlan?
     
+    // TODO: conditionally render an entirely different view if pilot ID has not been set
     var body: some View {
         VStack {
             Spacer()
