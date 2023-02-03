@@ -8,7 +8,11 @@
 import Foundation
 import Alamofire
 
-struct SimbriefUser {
+struct FlightPlan {
+    let origin: String
+}
+
+class SimbriefUser {
     var pilotId: String?
     
     init() {
@@ -17,7 +21,7 @@ struct SimbriefUser {
     
     // MARK: public functions
     
-    public mutating func refreshPilotId () {
+    public func refreshPilotId () {
         let defaults = UserDefaults.standard
         
         guard let simbriefUsernameFromDefaults = defaults.string(forKey: "username.simbrief") else { return }
@@ -25,7 +29,7 @@ struct SimbriefUser {
         pilotId = simbriefUsernameFromDefaults
     }
     
-    public func fetchLatestFlightPlan () {
+    public func fetchLatestFlightPlan (completionHandler: @escaping (_ result: FlightPlan) -> Void) async {
         let url = "https://www.simbrief.com/api/xml.fetcher.php?username=shermheadryder&json=1"
         
         AF.request(url).responseDecodable(of: SimBriefAPIFlightPlan.self) { response in
@@ -34,7 +38,7 @@ struct SimbriefUser {
                 return
             }
             
-            print("origin: \(results.origin.icao_code)")
+            completionHandler(FlightPlan(origin: results.origin.icao_code))
         }
     }
 }

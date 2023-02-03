@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SimbriefView: View {
     @EnvironmentObject var userController: UserController
+    @State var flightPlan: FlightPlan?
     
     var body: some View {
         VStack {
@@ -16,16 +17,16 @@ struct SimbriefView: View {
             
             Text(userController.simbriefUser.pilotId ?? "Simbrief Pilot ID not set")
             
+            Text(flightPlan?.origin ?? "foo")
+            
             Spacer()
             
             Divider()
         }
-        .onAppear {
-            guard let _ = userController.simbriefUser.pilotId else {
-                return
+        .task {
+            await userController.simbriefUser.fetchLatestFlightPlan() { response in
+                flightPlan = response
             }
-            
-            userController.simbriefUser.fetchLatestFlightPlan()
         }
     }
 }
