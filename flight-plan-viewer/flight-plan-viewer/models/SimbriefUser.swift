@@ -23,11 +23,4 @@ struct SimbriefUser {
         
         pilotId = simbriefUsernameFromDefaults
     }
-    
-    // MARK: private functions
-    
-    // TODO: only used for testing,
-    private mutating func resetPilotId () {
-        UserDefaults.standard.removeObject(forKey: "username.simbrief")
-    }
 }
