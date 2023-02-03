@@ -10,13 +10,13 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            HomeView()
+            SimbriefView()
                 .tabItem {
-                    Label("Home", systemImage: "house")
+                    Text("Simbrief")
                 }
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "gear")
+                    Text("Settings")
                 }
         }
     }
