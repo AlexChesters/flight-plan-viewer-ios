@@ -20,6 +20,13 @@ struct SimbriefView: View {
             
             Divider()
         }
+        .onAppear {
+            guard let _ = userController.simbriefUser.pilotId else {
+                return
+            }
+            
+            userController.simbriefUser.fetchLatestFlightPlan()
+        }
     }
 }
 

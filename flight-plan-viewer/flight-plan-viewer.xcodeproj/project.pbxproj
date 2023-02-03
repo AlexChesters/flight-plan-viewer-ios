@@ -16,6 +16,8 @@
 		AC1E56AD298C7D570051F192 /* SimbriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56AC298C7D570051F192 /* SimbriefView.swift */; };
 		AC1E56B1298C7EE30051F192 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56B0298C7EE30051F192 /* SettingsView.swift */; };
 		AC1E56B3298C814E0051F192 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56B2298C814E0051F192 /* MainView.swift */; };
+		ACDED084298DB28F00773C16 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ACDED083298DB28F00773C16 /* Alamofire */; };
+		ACDED087298DB2BC00773C16 /* SimbriefAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,7 @@
 		AC1E56AC298C7D570051F192 /* SimbriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbriefView.swift; sourceTree = "<group>"; };
 		AC1E56B0298C7EE30051F192 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AC1E56B2298C814E0051F192 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbriefAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACDED084298DB28F00773C16 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,6 +124,7 @@
 		AC1E56A6298C7CBE0051F192 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				ACDED085298DB2AF00773C16 /* networking */,
 				AC1E56A7298C7CC30051F192 /* SimbriefUser.swift */,
 			);
 			path = models;
@@ -131,6 +136,14 @@
 				AC1E56AA298C7D340051F192 /* UserController.swift */,
 			);
 			path = controllers;
+			sourceTree = "<group>";
+		};
+		ACDED085298DB2AF00773C16 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */,
+			);
+			path = networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +162,9 @@
 			dependencies = (
 			);
 			name = "flight-plan-viewer";
+			packageProductDependencies = (
+				ACDED083298DB28F00773C16 /* Alamofire */,
+			);
 			productName = "flight-plan-viewer";
 			productReference = AC1E5678298C7BE40051F192 /* flight-plan-viewer.app */;
 			productType = "com.apple.product-type.application";
@@ -199,6 +215,9 @@
 				Base,
 			);
 			mainGroup = AC1E566F298C7BE40051F192;
+			packageReferences = (
+				ACDED082298DB28F00773C16 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = AC1E5679298C7BE40051F192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -236,6 +255,7 @@
 				AC1E56B1298C7EE30051F192 /* SettingsView.swift in Sources */,
 				AC1E56B3298C814E0051F192 /* MainView.swift in Sources */,
 				AC1E567C298C7BE40051F192 /* flight_plan_viewerApp.swift in Sources */,
+				ACDED087298DB2BC00773C16 /* SimbriefAPI.swift in Sources */,
 				AC1E56AB298C7D340051F192 /* UserController.swift in Sources */,
 				AC1E56AD298C7D570051F192 /* SimbriefView.swift in Sources */,
 				AC1E56A8298C7CC30051F192 /* SimbriefUser.swift in Sources */,
@@ -504,6 +524,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ACDED082298DB28F00773C16 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ACDED083298DB28F00773C16 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ACDED082298DB28F00773C16 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AC1E5670298C7BE40051F192 /* Project object */;
 }
