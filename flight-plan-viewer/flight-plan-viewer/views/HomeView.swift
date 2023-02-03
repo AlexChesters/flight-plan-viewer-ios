@@ -14,7 +14,7 @@ struct HomeView: View {
         VStack {
             Spacer()
             
-            Text(userController.simbriefUser.pilotId ?? "Pilot ID not set")
+            Text(userController.simbriefUser.pilotId ?? "Simbrief Pilot ID not set")
             
             Spacer()
             

@@ -10,6 +10,8 @@ import SwiftUI
 fileprivate let SIMBRIEF_USER_KEY = "username.simbrief"
 
 struct SettingsView: View {
+    @EnvironmentObject var userController: UserController
+    
     @AppStorage(SIMBRIEF_USER_KEY) private var simbriefUsername: String = ""
     
     var body: some View {
@@ -17,17 +19,24 @@ struct SettingsView: View {
             Spacer()
             
             TextField("Simbrief username", text: $simbriefUsername)
+                .autocorrectionDisabled()
+                .keyboardType(.alphabet)
             
             Spacer()
             
             Button {
-                print("button")
                 let defaults = UserDefaults.standard
                 
-                defaults.set(
-                    simbriefUsername,
-                    forKey: SIMBRIEF_USER_KEY
-                )
+                if simbriefUsername.isEmpty {
+                    defaults.removeObject(forKey: SIMBRIEF_USER_KEY)
+                } else {
+                    defaults.set(
+                        simbriefUsername,
+                        forKey: SIMBRIEF_USER_KEY
+                    )
+                }
+                
+                userController.simbriefUser.refreshPilotId()
             } label: {
                 Text("Save")
             }
