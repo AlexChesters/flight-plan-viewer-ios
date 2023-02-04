@@ -32,8 +32,6 @@ struct SimbriefView: View {
                 }
         } else {
             VStack {
-                Spacer()
-                
                 Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
                 
                 Spacer()
