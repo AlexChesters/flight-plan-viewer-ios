@@ -23,22 +23,22 @@ struct SimbriefView: View {
     var body: some View {
         if userController.simbriefUser.pilotId == nil {
             NoUserView()
+        } else if flightPlan == nil {
+            ProgressView()
+                .task {
+                    await userController.simbriefUser.fetchLatestFlightPlan() { response in
+                        flightPlan = response
+                    }
+                }
         } else {
             VStack {
                 Spacer()
                 
-                Text(userController.simbriefUser.pilotId ?? "Simbrief Pilot ID not set")
-                
-                Text(flightPlan?.origin ?? "foo")
+                Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
                 
                 Spacer()
                 
                 Divider()
-            }
-            .task {
-                await userController.simbriefUser.fetchLatestFlightPlan() { response in
-                    flightPlan = response
-                }
             }
         }
     }
@@ -46,13 +46,6 @@ struct SimbriefView: View {
 
 struct SimbriefView_Previews: PreviewProvider {
     static var previews: some View {
-        let userController = UserController()
-        let userControllerWithPilotIdSet = UserController()
-        userControllerWithPilotIdSet.simbriefUser.pilotId = "Sully Sullenberger"
-        
-        return Group {
-            SimbriefView().environmentObject(userController)
-            SimbriefView().environmentObject(userControllerWithPilotIdSet)
-        }
+        SimbriefView().environmentObject(UserController())
     }
 }

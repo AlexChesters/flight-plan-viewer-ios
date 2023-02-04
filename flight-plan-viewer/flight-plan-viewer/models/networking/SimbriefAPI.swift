@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct SimbriefAPIFlightPlanOrigin: Decodable {
+struct SimbriefAPIAirport: Decodable {
     let icao_code: String
 }
 
 class SimBriefAPIFlightPlan: Decodable {
-    let origin: SimbriefAPIFlightPlanOrigin
+    let origin: SimbriefAPIAirport
+    let destination: SimbriefAPIAirport
 }

@@ -10,6 +10,7 @@ import Alamofire
 
 struct FlightPlan {
     let origin: String
+    let destination: String
 }
 
 class SimbriefUser {
@@ -38,7 +39,11 @@ class SimbriefUser {
                 return
             }
             
-            completionHandler(FlightPlan(origin: results.origin.icao_code))
+            let flightPlan = FlightPlan(
+                origin: results.origin.icao_code,
+                destination: results.destination.icao_code
+            )
+            completionHandler(flightPlan)
         }
     }
 }
