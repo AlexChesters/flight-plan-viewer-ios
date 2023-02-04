@@ -7,6 +7,13 @@
 
 import Foundation
 import Alamofire
+import Mocker
+
+let simbriefUrl = "https://www.simbrief.com/api/xml.fetcher.php?username=shermheadryder&json=1"
+
+public final class MockData {
+    public static let simbriefFlightPlan: URL = Bundle(for: MockData.self).url(forResource: "simbrief-flight-plan", withExtension: "json")!
+}
 
 struct FlightPlan {
     let origin: String
@@ -15,8 +22,13 @@ struct FlightPlan {
 
 class SimbriefUser {
     var pilotId: String?
+    private let sessionManager: Alamofire.Session
     
     init() {
+        let configuration = URLSessionConfiguration.af.default
+        configuration.protocolClasses = [MockingURLProtocol.self]
+        sessionManager = Alamofire.Session(configuration: configuration)
+        
         refreshPilotId()
     }
     
@@ -31,9 +43,12 @@ class SimbriefUser {
     }
     
     public func fetchLatestFlightPlan (completionHandler: @escaping (_ result: FlightPlan) -> Void) async {
-        let url = "https://www.simbrief.com/api/xml.fetcher.php?username=shermheadryder&json=1"
+        let mock = Mock(url: URL(string: simbriefUrl)!, dataType: .json, statusCode: 200, data: [
+            .get: try! Data(contentsOf: MockData.simbriefFlightPlan)
+        ])
+        mock.register()
         
-        AF.request(url).responseDecodable(of: SimBriefAPIFlightPlan.self) { response in
+        sessionManager.request(simbriefUrl).responseDecodable(of: SimBriefAPIFlightPlan.self) { response in
             guard let results = response.value else {
                 debugPrint(response)
                 return
