@@ -43,6 +43,7 @@ class SimbriefUser {
     }
     
     public func fetchLatestFlightPlan (completionHandler: @escaping (_ result: FlightPlan) -> Void) async {
+        print("hello!")
         let mock = Mock(url: URL(string: simbriefUrl)!, dataType: .json, statusCode: 200, data: [
             .get: try! Data(contentsOf: MockData.simbriefFlightPlan)
         ])
