@@ -44,6 +44,14 @@ struct SimbriefView: View {
 
 struct SimbriefView_Previews: PreviewProvider {
     static var previews: some View {
-        SimbriefView().environmentObject(UserController())
+        let userControllerWithoutSimbriefUser = UserController()
+        let userControllerWithSimbriefUser = UserController()
+        
+        userControllerWithSimbriefUser.simbriefUser.pilotId = "shermheadryder"
+        
+        return Group {
+            SimbriefView().environmentObject(userControllerWithoutSimbriefUser)
+            SimbriefView().environmentObject(userControllerWithSimbriefUser)
+        }
     }
 }
