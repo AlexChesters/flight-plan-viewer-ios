@@ -32,8 +32,13 @@ struct SimbriefView: View {
                 }
         } else {
             VStack {
-                Text("\(flightPlan!.origin.code) - \(flightPlan!.destination.code)")
-                    .font(.title)
+                HStack {
+                    Image(systemName: "airplane.departure")
+                    Text("\(flightPlan!.origin.code) - \(flightPlan!.destination.code)")
+                        .font(.title)
+                    Image(systemName: "airplane.arrival")
+                }
+                
                 Text("\(flightPlan!.origin.name) - \(flightPlan!.destination.name)").italic()
                 
                 Spacer().frame(maxHeight: 20)
