@@ -33,6 +33,12 @@ struct SimbriefView: View {
         } else {
             VStack {
                 Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
+                    .font(.title)
+                HStack {
+                    
+                    Text("\(flightPlan!.flightNumber) / \(flightPlan!.callsign)")
+                        .font(.headline)
+                }
                 
                 Divider()
                 
@@ -55,7 +61,9 @@ struct SimbriefView_Previews: PreviewProvider {
             flightPlan: FlightPlan(
                 origin: "EGCC",
                 destination: "EGJJ",
-                costIndex: "54"
+                costIndex: "54",
+                flightNumber: "EZY1354",
+                callsign: "EZY69AZ"
             )
         )
 

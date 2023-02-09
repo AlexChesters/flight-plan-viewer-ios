@@ -19,6 +19,8 @@ struct FlightPlan {
     let origin: String
     let destination: String
     let costIndex: String
+    let flightNumber: String
+    let callsign: String
 }
 
 class SimbriefUser {
@@ -58,7 +60,9 @@ class SimbriefUser {
             let flightPlan = FlightPlan(
                 origin: results.origin.icao_code,
                 destination: results.destination.icao_code,
-                costIndex: results.general.costIndex
+                costIndex: results.general.costIndex,
+                flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
+                callsign: results.atc.callsign
             )
             completionHandler(flightPlan)
         }
