@@ -32,7 +32,7 @@ struct SimbriefView: View {
                 }
         } else {
             VStack {
-                Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
+                Text("\(flightPlan!.origin.code) - \(flightPlan!.destination.code)")
                     .font(.title)
                 HStack {
                     Image(systemName: "airplane")
@@ -66,8 +66,14 @@ struct SimbriefView_Previews: PreviewProvider {
         let viewWithoutSimbriefUser = SimbriefView()
         let viewWithFlightPlan = SimbriefView(
             flightPlan: FlightPlan(
-                origin: "EGCC",
-                destination: "EGLC",
+                origin: Airport(
+                    code: "EGCC",
+                    name: "Manchester"
+                ),
+                destination: Airport(
+                    code: "EGLC",
+                    name: "London City"
+                ),
                 costIndex: "54",
                 cruisingAltitude: "FL180",
                 flightNumber: "BAW143",

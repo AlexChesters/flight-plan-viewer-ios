@@ -15,10 +15,15 @@ public final class MockData {
     public static let simbriefFlightPlan: URL = Bundle(for: MockData.self).url(forResource: "simbrief-flight-plan", withExtension: "json")!
 }
 
+struct Airport {
+    let code: String
+    let name: String
+}
+
 struct FlightPlan {
     // location info
-    let origin: String
-    let destination: String
+    let origin: Airport
+    let destination: Airport
     
     // perf info
     let costIndex: String
@@ -64,9 +69,12 @@ class SimbriefUser {
                 return
             }
             
+            let origin = Airport(code: results.origin.icaoCode, name: results.origin.name)
+            let destination = Airport(code: results.destination.icaoCode, name: results.destination.name)
+            
             let flightPlan = FlightPlan(
-                origin: results.origin.icaoCode,
-                destination: results.destination.icaoCode,
+                origin: origin,
+                destination: destination,
                 costIndex: results.general.costIndex,
                 cruisingAltitude: "FL\(results.atc.cruisingAltitude)",
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
