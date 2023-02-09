@@ -35,7 +35,6 @@ struct SimbriefView: View {
                 Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
                     .font(.title)
                 HStack {
-                    
                     Text("\(flightPlan!.flightNumber) / \(flightPlan!.callsign)")
                         .font(.headline)
                 }
