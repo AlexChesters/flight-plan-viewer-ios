@@ -15,7 +15,7 @@ fileprivate struct NoUserView: View {
     }
 }
 
-fileprivate struct Header: View {
+fileprivate struct FlightSummary: View {
     let flightPlan: FlightPlan
     
     var body: some View {
@@ -39,6 +39,72 @@ fileprivate struct Header: View {
     }
 }
 
+fileprivate struct PerformanceAndFuel: View {
+    let flightPlan: FlightPlan
+    
+    var body: some View {
+        HStack {
+            VStack {
+                Text("ZFW:")
+                    .frame(maxWidth: 70, alignment: .leading)
+                Text("LW:")
+                    .frame(maxWidth: 70, alignment: .leading)
+                Text("Payload:")
+                    .frame(maxWidth: 70, alignment: .leading)
+            }
+            VStack {
+                Text(verbatim: "\(flightPlan.zeroFuelWeight) \(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.landingWeight) \(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.payloadWeight) \(flightPlan.weightUnits.rawValue)")
+            }
+            
+            VStack {
+                Text("Cost index:")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                Text("Cruising altitude:")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            VStack {
+                Text("\(flightPlan.costIndex)")
+                    .frame(maxWidth: 50, alignment: .trailing)
+                Text("\(flightPlan.cruisingAltitude)")
+                    .frame(maxWidth: 50, alignment: .trailing)
+            }
+        }
+
+        Spacer().frame(maxHeight: 30)
+        
+        HStack {
+            VStack {
+                Text("Taxi fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+                Text("Trip fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+                Text("Contingency fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+                Text("Alternate fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+                Text("Reserve fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+                Text("Additional fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+                Text("Minimum take-off fuel:")
+                    .frame(maxWidth: 200, alignment: .leading)
+            }
+            VStack {
+                Text(verbatim: "\(flightPlan.taxiFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.tripFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.contingencyFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.alternateFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.reserveFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.additionalFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.minimumTakeOffFuel)\(flightPlan.weightUnits.rawValue)")
+            }
+        }
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
 struct SimbriefView: View {
     @EnvironmentObject var userController: UserController
     @State var flightPlan: FlightPlan?
@@ -56,71 +122,13 @@ struct SimbriefView: View {
                 }
         } else {
             VStack {
-                Header(flightPlan: flightPlan!)
+                FlightSummary(flightPlan: flightPlan!)
                 
                 Divider()
                 
                 Spacer().frame(maxHeight: 15)
                 
-                HStack {
-                    VStack {
-                        Text("ZFW:")
-                            .frame(maxWidth: 70, alignment: .leading)
-                        Text("LW:")
-                            .frame(maxWidth: 70, alignment: .leading)
-                        Text("Payload:")
-                            .frame(maxWidth: 70, alignment: .leading)
-                    }
-                    VStack {
-                        Text(verbatim: "\(flightPlan!.zeroFuelWeight) \(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.landingWeight) \(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.payloadWeight) \(flightPlan!.weightUnits.rawValue)")
-                    }
-                    
-                    VStack {
-                        Text("Cost index:")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                        Text("Cruising altitude:")
-                            .frame(maxWidth: .infinity, alignment: .trailing)
-                    }
-                    VStack {
-                        Text("\(flightPlan!.costIndex)")
-                            .frame(maxWidth: 50, alignment: .trailing)
-                        Text("\(flightPlan!.cruisingAltitude)")
-                            .frame(maxWidth: 50, alignment: .trailing)
-                    }
-                }
-
-                Spacer().frame(maxHeight: 30)
-                
-                HStack {
-                    VStack {
-                        Text("Taxi fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                        Text("Trip fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                        Text("Contingency fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                        Text("Alternate fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                        Text("Reserve fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                        Text("Additional fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                        Text("Minimum take-off fuel:")
-                            .frame(maxWidth: 200, alignment: .leading)
-                    }
-                    VStack {
-                        Text(verbatim: "\(flightPlan!.taxiFuel)\(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.tripFuel)\(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.contingencyFuel)\(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.alternateFuel)\(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.reserveFuel)\(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.additionalFuel)\(flightPlan!.weightUnits.rawValue)")
-                        Text(verbatim: "\(flightPlan!.minimumTakeOffFuel)\(flightPlan!.weightUnits.rawValue)")
-                    }
-                }
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                PerformanceAndFuel(flightPlan: flightPlan!)
                 
                 Spacer()
 
