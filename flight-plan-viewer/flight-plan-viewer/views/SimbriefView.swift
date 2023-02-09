@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 fileprivate struct NoUserView: View {
     var body: some View {
@@ -105,6 +106,15 @@ fileprivate struct PerformanceAndFuel: View {
     }
 }
 
+fileprivate struct RouteMap: View {
+    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    
+    var body: some View {
+        Map(coordinateRegion: $region)
+            .frame(width: .infinity, height: .infinity)
+    }
+}
+
 struct SimbriefView: View {
     @EnvironmentObject var userController: UserController
     @State var flightPlan: FlightPlan?
@@ -130,7 +140,9 @@ struct SimbriefView: View {
                 
                 PerformanceAndFuel(flightPlan: flightPlan!)
                 
-                Spacer()
+                Spacer().frame(maxHeight: 30)
+                
+                RouteMap()
 
                 Divider()
             }
