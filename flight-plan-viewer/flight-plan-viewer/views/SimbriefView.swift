@@ -34,6 +34,10 @@ struct SimbriefView: View {
             VStack {
                 Text("\(flightPlan!.origin.code) - \(flightPlan!.destination.code)")
                     .font(.title)
+                Text("\(flightPlan!.origin.name) - \(flightPlan!.destination.name)").italic()
+                
+                Spacer().frame(maxHeight: 20)
+                
                 HStack {
                     Image(systemName: "airplane")
                     Text("\(flightPlan!.flightNumber) / \(flightPlan!.callsign)")
@@ -42,6 +46,8 @@ struct SimbriefView: View {
                 }
                 
                 Divider()
+                
+                Spacer().frame(maxHeight: 15)
                 
                 HStack() {
                     VStack {
