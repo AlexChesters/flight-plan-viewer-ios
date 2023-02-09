@@ -26,7 +26,6 @@ struct SimbriefView: View {
         } else if flightPlan == nil {
             ProgressView()
                 .task {
-                    print("hi")
                     await userController.simbriefUser.fetchLatestFlightPlan() { response in
                         flightPlan = response
                     }
@@ -46,19 +45,21 @@ struct SimbriefView: View {
 struct SimbriefView_Previews: PreviewProvider {
     static var previews: some View {
         let viewWithoutSimbriefUser = SimbriefView()
-        let viewWithFlightPlan = SimbriefView()
+        let viewWithFlightPlan = SimbriefView(
+            flightPlan: FlightPlan(
+                origin: "EGCC",
+                destination: "EGJJ"
+            )
+        )
 
         let userControllerWithSimbriefUser = UserController()
         userControllerWithSimbriefUser.simbriefUser.pilotId = "foo"
-        viewWithFlightPlan.flightPlan = FlightPlan(
-            origin: "EGCC",
-            destination: "EGJJ"
-        )
         
         return Group {
-            viewWithoutSimbriefUser.environmentObject(UserController())
-            // TODO: why does this not preview properly?
-            viewWithFlightPlan.environmentObject(userControllerWithSimbriefUser)
+            viewWithoutSimbriefUser
+                .environmentObject(UserController())
+            viewWithFlightPlan
+                .environmentObject(userControllerWithSimbriefUser)
         }
     }
 }
