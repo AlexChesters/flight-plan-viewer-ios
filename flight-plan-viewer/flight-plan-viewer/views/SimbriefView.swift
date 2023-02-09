@@ -82,6 +82,7 @@ struct SimbriefView_Previews: PreviewProvider {
                 ),
                 costIndex: "54",
                 cruisingAltitude: "FL180",
+                weightUnits: .kgs,
                 flightNumber: "BAW143",
                 callsign: "SHT4L"
             )

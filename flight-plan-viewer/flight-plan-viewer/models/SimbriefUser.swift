@@ -28,6 +28,7 @@ struct FlightPlan {
     // perf info
     let costIndex: String
     let cruisingAltitude: String
+    let weightUnits: WeightUnit
     
     // atc info
     let flightNumber: String
@@ -77,6 +78,7 @@ class SimbriefUser {
                 destination: destination,
                 costIndex: results.general.costIndex,
                 cruisingAltitude: "FL\(results.atc.cruisingAltitude)",
+                weightUnits: results.params.units,
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
                 callsign: results.atc.callsign
             )

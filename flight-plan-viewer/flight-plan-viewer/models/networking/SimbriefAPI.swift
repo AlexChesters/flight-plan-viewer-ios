@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct SimbriefAPIAirportInfo: Decodable {
-    let icaoCode: String
-    let name: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case icaoCode = "icao_code"
-        case name = "name"
-    }
+enum WeightUnit: String, Codable {
+    case lbs
+    case kgs
+}
+
+struct SimbriefAPIParamsInfo: Decodable {
+    // TODO: test this works with lbs
+    let units: WeightUnit
 }
 
 struct SimbriefAPIGeneralInfo: Decodable {
@@ -29,6 +29,16 @@ struct SimbriefAPIGeneralInfo: Decodable {
     }
 }
 
+struct SimbriefAPIAirportInfo: Decodable {
+    let icaoCode: String
+    let name: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case icaoCode = "icao_code"
+        case name = "name"
+    }
+}
+
 struct SimbriefAPIAtcInfo: Decodable {
     let callsign: String
     let cruisingAltitude: String
@@ -40,8 +50,9 @@ struct SimbriefAPIAtcInfo: Decodable {
 }
 
 class SimBriefAPIFlightPlan: Decodable {
+    let params: SimbriefAPIParamsInfo
+    let general: SimbriefAPIGeneralInfo
     let origin: SimbriefAPIAirportInfo
     let destination: SimbriefAPIAirportInfo
-    let general: SimbriefAPIGeneralInfo
     let atc: SimbriefAPIAtcInfo
 }
