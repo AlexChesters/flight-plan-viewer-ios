@@ -39,6 +39,14 @@ struct SimbriefAPIAirportInfo: Decodable {
     }
 }
 
+struct SimbriefAPIWeightsInfo: Decodable {
+    let zeroFuelWeight: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case zeroFuelWeight = "est_zfw"
+    }
+}
+
 struct SimbriefAPIAtcInfo: Decodable {
     let callsign: String
     let cruisingAltitude: String
@@ -55,4 +63,5 @@ class SimBriefAPIFlightPlan: Decodable {
     let origin: SimbriefAPIAirportInfo
     let destination: SimbriefAPIAirportInfo
     let atc: SimbriefAPIAtcInfo
+    let weights: SimbriefAPIWeightsInfo
 }

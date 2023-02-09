@@ -49,7 +49,11 @@ struct SimbriefView: View {
                 
                 Spacer().frame(maxHeight: 15)
                 
-                HStack() {
+                HStack {
+                    VStack {
+                        Text(verbatim: "ZFW: \(flightPlan!.zeroFuelWeight) \(flightPlan!.weightUnits.rawValue)")
+                    }
+                    
                     VStack {
                         Text("Cost index: \(flightPlan!.costIndex)")
                             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -83,6 +87,7 @@ struct SimbriefView_Previews: PreviewProvider {
                 costIndex: "54",
                 cruisingAltitude: "FL180",
                 weightUnits: .kgs,
+                zeroFuelWeight: 28292,
                 flightNumber: "BAW143",
                 callsign: "SHT4L"
             )
