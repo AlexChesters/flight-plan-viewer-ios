@@ -95,9 +95,14 @@ struct SimbriefView: View {
                 
                 HStack {
                     VStack {
-                        Text(verbatim: "foo")
+                        Text("Taxi:")
+                            .frame(maxWidth: 50, alignment: .leading)
                     }
-                }
+                    VStack {
+                        Text(verbatim: "\(flightPlan!.taxiFuel)\(flightPlan!.weightUnits.rawValue)")
+                    }
+                }.border(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer()
 
