@@ -12,7 +12,11 @@ struct SimbriefAPIAirport: Decodable {
 }
 
 struct SimbriefAPIGeneralInfo: Decodable {
-    let costindex: String
+    let costIndex: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case costIndex = "costindex"
+    }
 }
 
 class SimBriefAPIFlightPlan: Decodable {

@@ -58,7 +58,7 @@ class SimbriefUser {
             let flightPlan = FlightPlan(
                 origin: results.origin.icao_code,
                 destination: results.destination.icao_code,
-                costIndex: results.general.costindex
+                costIndex: results.general.costIndex
             )
             completionHandler(flightPlan)
         }
