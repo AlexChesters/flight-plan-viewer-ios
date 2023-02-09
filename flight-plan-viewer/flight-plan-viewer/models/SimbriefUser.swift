@@ -33,6 +33,9 @@ struct FlightPlan {
     let landingWeight: Int
     let payloadWeight: Int
     
+    // fuel info
+    let taxiFuel: Int
+    
     // atc info
     let flightNumber: String
     let callsign: String
@@ -85,6 +88,7 @@ class SimbriefUser {
                 zeroFuelWeight: Int(results.weights.zeroFuelWeight) ?? 0,
                 landingWeight: Int(results.weights.landingWeight) ?? 0,
                 payloadWeight: Int(results.weights.payloadWeight) ?? 0,
+                taxiFuel: Int(results.fuel.taxiFuel) ?? 0,
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
                 callsign: results.atc.callsign
             )

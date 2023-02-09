@@ -15,6 +15,30 @@ fileprivate struct NoUserView: View {
     }
 }
 
+fileprivate struct Header: View {
+    let flightPlan: FlightPlan
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "airplane.departure")
+            Text("\(flightPlan.origin.code) - \(flightPlan.destination.code)")
+                .font(.title)
+            Image(systemName: "airplane.arrival")
+        }
+        
+        Text("\(flightPlan.origin.name) - \(flightPlan.destination.name)").italic()
+        
+        Spacer().frame(maxHeight: 20)
+        
+        HStack {
+            Image(systemName: "airplane")
+            Text("\(flightPlan.flightNumber) / \(flightPlan.callsign)")
+                .font(.headline)
+            Image(systemName: "headphones")
+        }
+    }
+}
+
 struct SimbriefView: View {
     @EnvironmentObject var userController: UserController
     @State var flightPlan: FlightPlan?
@@ -32,23 +56,7 @@ struct SimbriefView: View {
                 }
         } else {
             VStack {
-                HStack {
-                    Image(systemName: "airplane.departure")
-                    Text("\(flightPlan!.origin.code) - \(flightPlan!.destination.code)")
-                        .font(.title)
-                    Image(systemName: "airplane.arrival")
-                }
-                
-                Text("\(flightPlan!.origin.name) - \(flightPlan!.destination.name)").italic()
-                
-                Spacer().frame(maxHeight: 20)
-                
-                HStack {
-                    Image(systemName: "airplane")
-                    Text("\(flightPlan!.flightNumber) / \(flightPlan!.callsign)")
-                        .font(.headline)
-                    Image(systemName: "headphones")
-                }
+                Header(flightPlan: flightPlan!)
                 
                 Divider()
                 
@@ -83,6 +91,14 @@ struct SimbriefView: View {
                     }
                 }
 
+                Spacer().frame(maxHeight: 30)
+                
+                HStack {
+                    VStack {
+                        Text(verbatim: "foo")
+                    }
+                }
+                
                 Spacer()
 
                 Divider()
@@ -111,6 +127,7 @@ struct SimbriefView_Previews: PreviewProvider {
                 zeroFuelWeight: 28292,
                 landingWeight: 29751,
                 payloadWeight: 7592,
+                taxiFuel: 136,
                 flightNumber: "BAW143",
                 callsign: "SHT4L"
             )
