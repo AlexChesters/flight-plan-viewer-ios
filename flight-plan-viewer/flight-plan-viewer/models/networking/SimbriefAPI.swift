@@ -42,10 +42,12 @@ struct SimbriefAPIAirportInfo: Decodable {
 struct SimbriefAPIWeightsInfo: Decodable {
     let zeroFuelWeight: String
     let landingWeight: String
+    let payloadWeight: String
     
     private enum CodingKeys: String, CodingKey {
         case zeroFuelWeight = "est_zfw"
-        case landingWeight = "29751"
+        case landingWeight = "est_ldw"
+        case payloadWeight = "payload"
     }
 }
 

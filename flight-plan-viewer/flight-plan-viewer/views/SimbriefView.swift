@@ -52,13 +52,16 @@ struct SimbriefView: View {
                 HStack {
                     VStack {
                         Text("ZFW:")
-                            .frame(maxWidth: 50, alignment: .leading)
+                            .frame(maxWidth: 70, alignment: .leading)
                         Text("LW:")
-                            .frame(maxWidth: 50, alignment: .leading)
+                            .frame(maxWidth: 70, alignment: .leading)
+                        Text("Payload:")
+                            .frame(maxWidth: 70, alignment: .leading)
                     }
                     VStack {
                         Text(verbatim: "\(flightPlan!.zeroFuelWeight) \(flightPlan!.weightUnits.rawValue)")
                         Text(verbatim: "\(flightPlan!.landingWeight) \(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.payloadWeight) \(flightPlan!.weightUnits.rawValue)")
                     }
                     
                     VStack {
@@ -102,6 +105,7 @@ struct SimbriefView_Previews: PreviewProvider {
                 weightUnits: .kgs,
                 zeroFuelWeight: 28292,
                 landingWeight: 29751,
+                payloadWeight: 7592,
                 flightNumber: "BAW143",
                 callsign: "SHT4L"
             )
