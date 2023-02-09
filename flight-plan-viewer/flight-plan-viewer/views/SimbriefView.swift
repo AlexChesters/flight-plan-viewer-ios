@@ -51,14 +51,27 @@ struct SimbriefView: View {
                 
                 HStack {
                     VStack {
-                        Text(verbatim: "ZFW: \(flightPlan!.zeroFuelWeight) \(flightPlan!.weightUnits.rawValue)")
+                        Text("ZFW:")
+                            .frame(maxWidth: 50, alignment: .leading)
+                        Text("LW:")
+                            .frame(maxWidth: 50, alignment: .leading)
+                    }
+                    VStack {
+                        Text(verbatim: "\(flightPlan!.zeroFuelWeight) \(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.landingWeight) \(flightPlan!.weightUnits.rawValue)")
                     }
                     
                     VStack {
-                        Text("Cost index: \(flightPlan!.costIndex)")
+                        Text("Cost index:")
                             .frame(maxWidth: .infinity, alignment: .trailing)
-                        Text("Cruising altitude: \(flightPlan!.cruisingAltitude)")
+                        Text("Cruising altitude:")
                             .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                    VStack {
+                        Text("\(flightPlan!.costIndex)")
+                            .frame(maxWidth: 50, alignment: .trailing)
+                        Text("\(flightPlan!.cruisingAltitude)")
+                            .frame(maxWidth: 50, alignment: .trailing)
                     }
                 }
 
@@ -88,6 +101,7 @@ struct SimbriefView_Previews: PreviewProvider {
                 cruisingAltitude: "FL180",
                 weightUnits: .kgs,
                 zeroFuelWeight: 28292,
+                landingWeight: 29751,
                 flightNumber: "BAW143",
                 callsign: "SHT4L"
             )
