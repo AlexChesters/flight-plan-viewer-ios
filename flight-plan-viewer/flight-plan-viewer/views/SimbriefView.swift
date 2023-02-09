@@ -35,8 +35,10 @@ struct SimbriefView: View {
                 Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
                     .font(.title)
                 HStack {
+                    Image(systemName: "airplane")
                     Text("\(flightPlan!.flightNumber) / \(flightPlan!.callsign)")
                         .font(.headline)
+                    Image(systemName: "headphones")
                 }
                 
                 Divider()
