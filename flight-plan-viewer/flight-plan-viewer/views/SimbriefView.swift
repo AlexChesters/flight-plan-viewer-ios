@@ -45,6 +45,8 @@ struct SimbriefView: View {
                 
                 Text("Cost index: \(flightPlan!.costIndex)")
                     .frame(maxWidth: .infinity, alignment: .trailing)
+                Text("Cruising altitude: \(flightPlan!.cruisingAltitude)")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
 
                 Spacer()
 
@@ -63,6 +65,7 @@ struct SimbriefView_Previews: PreviewProvider {
                 origin: "EGCC",
                 destination: "EGJJ",
                 costIndex: "54",
+                cruisingAltitude: "FL360",
                 flightNumber: "EZY1354",
                 callsign: "EZY69AZ"
             )

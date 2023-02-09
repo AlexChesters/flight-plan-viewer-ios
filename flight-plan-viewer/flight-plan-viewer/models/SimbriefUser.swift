@@ -16,11 +16,18 @@ public final class MockData {
 }
 
 struct FlightPlan {
+    // location info
     let origin: String
     let destination: String
+    
+    // perf info
     let costIndex: String
+    let cruisingAltitude: String
+    
+    // atc info
     let flightNumber: String
     let callsign: String
+    
 }
 
 class SimbriefUser {
@@ -61,6 +68,7 @@ class SimbriefUser {
                 origin: results.origin.icao_code,
                 destination: results.destination.icao_code,
                 costIndex: results.general.costIndex,
+                cruisingAltitude: "FL\(results.atc.cruisingAltitude)",
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
                 callsign: results.atc.callsign
             )

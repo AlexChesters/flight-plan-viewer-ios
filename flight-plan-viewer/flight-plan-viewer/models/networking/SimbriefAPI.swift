@@ -25,6 +25,12 @@ struct SimbriefAPIGeneralInfo: Decodable {
 
 struct SimbriefAPIAtcInfo: Decodable {
     let callsign: String
+    let cruisingAltitude: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case callsign = "callsign"
+        case cruisingAltitude = "initial_alt"
+    }
 }
 
 class SimBriefAPIFlightPlan: Decodable {
