@@ -8,7 +8,13 @@
 import Foundation
 
 struct SimbriefAPIAirportInfo: Decodable {
-    let icao_code: String
+    let icaoCode: String
+    let name: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case icaoCode = "icao_code"
+        case name = "name"
+    }
 }
 
 struct SimbriefAPIGeneralInfo: Decodable {

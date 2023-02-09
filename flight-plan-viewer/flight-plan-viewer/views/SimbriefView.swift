@@ -67,11 +67,11 @@ struct SimbriefView_Previews: PreviewProvider {
         let viewWithFlightPlan = SimbriefView(
             flightPlan: FlightPlan(
                 origin: "EGCC",
-                destination: "EGJJ",
+                destination: "EGLC",
                 costIndex: "54",
-                cruisingAltitude: "FL360",
-                flightNumber: "EZY1354",
-                callsign: "EZY69AZ"
+                cruisingAltitude: "FL180",
+                flightNumber: "BAW143",
+                callsign: "SHT4L"
             )
         )
 

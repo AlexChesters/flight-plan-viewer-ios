@@ -65,8 +65,8 @@ class SimbriefUser {
             }
             
             let flightPlan = FlightPlan(
-                origin: results.origin.icao_code,
-                destination: results.destination.icao_code,
+                origin: results.origin.icaoCode,
+                destination: results.destination.icaoCode,
                 costIndex: results.general.costIndex,
                 cruisingAltitude: "FL\(results.atc.cruisingAltitude)",
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
