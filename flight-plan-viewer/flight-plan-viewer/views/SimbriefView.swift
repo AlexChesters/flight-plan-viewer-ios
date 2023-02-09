@@ -95,13 +95,31 @@ struct SimbriefView: View {
                 
                 HStack {
                     VStack {
-                        Text("Taxi:")
-                            .frame(maxWidth: 50, alignment: .leading)
+                        Text("Taxi fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
+                        Text("Trip fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
+                        Text("Contingency fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
+                        Text("Alternate fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
+                        Text("Reserve fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
+                        Text("Additional fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
+                        Text("Minimum take-off fuel:")
+                            .frame(maxWidth: 200, alignment: .leading)
                     }
                     VStack {
                         Text(verbatim: "\(flightPlan!.taxiFuel)\(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.tripFuel)\(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.contingencyFuel)\(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.alternateFuel)\(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.reserveFuel)\(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.additionalFuel)\(flightPlan!.weightUnits.rawValue)")
+                        Text(verbatim: "\(flightPlan!.minimumTakeOffFuel)\(flightPlan!.weightUnits.rawValue)")
                     }
-                }.border(.red)
+                }
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Spacer()
@@ -133,6 +151,12 @@ struct SimbriefView_Previews: PreviewProvider {
                 landingWeight: 29751,
                 payloadWeight: 7592,
                 taxiFuel: 136,
+                tripFuel: 1011,
+                contingencyFuel: 140,
+                alternateFuel: 739,
+                reserveFuel: 580,
+                additionalFuel: 0,
+                minimumTakeOffFuel: 2470,
                 flightNumber: "BAW143",
                 callsign: "SHT4L"
             )

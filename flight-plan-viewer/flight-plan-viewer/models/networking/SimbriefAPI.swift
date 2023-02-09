@@ -53,9 +53,21 @@ struct SimbriefAPIWeightsInfo: Decodable {
 
 struct SimbriefAPIFuelInfo: Decodable {
     let taxiFuel: String
+    let tripFuel: String
+    let contingencyFuel: String
+    let alternateFuel: String
+    let reserveFuel: String
+    let additionalFuel: String
+    let minimumTakeOffFuel: String
     
     private enum CodingKeys: String, CodingKey {
         case taxiFuel = "taxi"
+        case tripFuel = "enroute_burn"
+        case contingencyFuel = "contingency"
+        case alternateFuel = "alternate_burn"
+        case reserveFuel = "reserve"
+        case additionalFuel = "extra"
+        case minimumTakeOffFuel = "min_takeoff"
     }
 }
 

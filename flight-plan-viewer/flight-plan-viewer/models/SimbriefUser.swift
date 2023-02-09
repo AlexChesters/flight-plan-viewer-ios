@@ -35,6 +35,12 @@ struct FlightPlan {
     
     // fuel info
     let taxiFuel: Int
+    let tripFuel: Int
+    let contingencyFuel: Int
+    let alternateFuel: Int
+    let reserveFuel: Int
+    let additionalFuel: Int
+    let minimumTakeOffFuel: Int
     
     // atc info
     let flightNumber: String
@@ -89,6 +95,12 @@ class SimbriefUser {
                 landingWeight: Int(results.weights.landingWeight) ?? 0,
                 payloadWeight: Int(results.weights.payloadWeight) ?? 0,
                 taxiFuel: Int(results.fuel.taxiFuel) ?? 0,
+                tripFuel: Int(results.fuel.tripFuel) ?? 0,
+                contingencyFuel: Int(results.fuel.contingencyFuel) ?? 0,
+                alternateFuel: Int(results.fuel.alternateFuel) ?? 0,
+                reserveFuel: Int(results.fuel.reserveFuel) ?? 0,
+                additionalFuel: Int(results.fuel.additionalFuel) ?? 0,
+                minimumTakeOffFuel: Int(results.fuel.minimumTakeOffFuel) ?? 0,
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
                 callsign: results.atc.callsign
             )
