@@ -43,10 +43,14 @@ struct SimbriefView: View {
                 
                 Divider()
                 
-                Text("Cost index: \(flightPlan!.costIndex)")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                Text("Cruising altitude: \(flightPlan!.cruisingAltitude)")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
+                HStack() {
+                    VStack {
+                        Text("Cost index: \(flightPlan!.costIndex)")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                        Text("Cruising altitude: \(flightPlan!.cruisingAltitude)")
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                    }
+                }
 
                 Spacer()
 
