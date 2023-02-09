@@ -107,11 +107,25 @@ fileprivate struct PerformanceAndFuel: View {
 }
 
 fileprivate struct RouteMap: View {
-    @State private var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275), span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
+    let center: CLLocationCoordinate2D
+    
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(
+            latitude: 51.507222,
+            longitude: -0.1275
+        ),
+        span: MKCoordinateSpan(
+            latitudeDelta: 0.5,
+            longitudeDelta: 0.5
+        )
+    )
     
     var body: some View {
         Map(coordinateRegion: $region)
             .frame(width: .infinity, height: .infinity)
+            .onAppear {
+                region.center = center
+            }
     }
 }
 
@@ -142,7 +156,9 @@ struct SimbriefView: View {
                 
                 Spacer().frame(maxHeight: 30)
                 
-                RouteMap()
+                RouteMap(
+                    center: flightPlan!.waypoints[0].location
+                )
 
                 Divider()
             }
@@ -178,7 +194,9 @@ struct SimbriefView_Previews: PreviewProvider {
                 additionalFuel: 0,
                 minimumTakeOffFuel: 2470,
                 flightNumber: "BAW143",
-                callsign: "SHT4L"
+                callsign: "SHT4L",
+                // Trent VOR
+                waypoints: [Waypoint(location: CLLocationCoordinate2D(latitude: 53.053953, longitude: -1.669969))]
             )
         )
 

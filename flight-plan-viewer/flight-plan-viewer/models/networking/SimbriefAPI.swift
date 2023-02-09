@@ -29,16 +29,6 @@ struct SimbriefAPIGeneralInfo: Decodable {
     }
 }
 
-struct SimbriefAPIAirportInfo: Decodable {
-    let icaoCode: String
-    let name: String
-    
-    private enum CodingKeys: String, CodingKey {
-        case icaoCode = "icao_code"
-        case name = "name"
-    }
-}
-
 struct SimbriefAPIWeightsInfo: Decodable {
     let zeroFuelWeight: String
     let landingWeight: String
@@ -71,6 +61,34 @@ struct SimbriefAPIFuelInfo: Decodable {
     }
 }
 
+struct SimbriefAPIAirportInfo: Decodable {
+    let icaoCode: String
+    let name: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case icaoCode = "icao_code"
+        case name = "name"
+    }
+}
+
+struct SimbriefAPINavFix: Decodable {
+    let latitude: String
+    let longitude: String
+    
+    private enum CodingKeys: String, CodingKey {
+        case latitude = "pos_lat"
+        case longitude = "pos_long"
+    }
+}
+
+struct SimbriefAPINavLogInfo: Decodable {
+    let waypoints: [SimbriefAPINavFix]
+    
+    private enum CodingKeys: String, CodingKey {
+        case waypoints = "fix"
+    }
+}
+
 struct SimbriefAPIAtcInfo: Decodable {
     let callsign: String
     let cruisingAltitude: String
@@ -89,4 +107,5 @@ class SimBriefAPIFlightPlan: Decodable {
     let atc: SimbriefAPIAtcInfo
     let weights: SimbriefAPIWeightsInfo
     let fuel: SimbriefAPIFuelInfo
+    let navlog: SimbriefAPINavLogInfo
 }

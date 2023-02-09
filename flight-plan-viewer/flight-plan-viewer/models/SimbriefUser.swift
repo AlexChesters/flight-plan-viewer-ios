@@ -8,6 +8,7 @@
 import Foundation
 import Alamofire
 import Mocker
+import CoreLocation
 
 let simbriefUrl = "https://www.simbrief.com/api/xml.fetcher.php?username=shermheadryder&json=1"
 
@@ -18,6 +19,10 @@ public final class MockData {
 struct Airport {
     let code: String
     let name: String
+}
+
+struct Waypoint {
+    let location: CLLocationCoordinate2D
 }
 
 struct FlightPlan {
@@ -46,6 +51,8 @@ struct FlightPlan {
     let flightNumber: String
     let callsign: String
     
+    // route
+    let waypoints: [Waypoint]
 }
 
 class SimbriefUser {
@@ -102,7 +109,10 @@ class SimbriefUser {
                 additionalFuel: Int(results.fuel.additionalFuel) ?? 0,
                 minimumTakeOffFuel: Int(results.fuel.minimumTakeOffFuel) ?? 0,
                 flightNumber: "\(results.general.airline)\(results.general.flightNumber)",
-                callsign: results.atc.callsign
+                callsign: results.atc.callsign,
+                waypoints: results.navlog.waypoints.map {
+                    return Waypoint(location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!))
+                }
             )
             completionHandler(flightPlan)
         }
