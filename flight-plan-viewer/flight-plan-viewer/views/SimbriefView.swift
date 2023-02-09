@@ -34,10 +34,16 @@ struct SimbriefView: View {
             VStack {
                 Text("\(flightPlan!.origin) - \(flightPlan!.destination)")
                 
-                Spacer()
+                Divider()
                 
+                Text("Cost index: \(flightPlan!.costIndex)")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+
+                Spacer()
+
                 Divider()
             }
+            .padding()
         }
     }
 }
@@ -48,7 +54,8 @@ struct SimbriefView_Previews: PreviewProvider {
         let viewWithFlightPlan = SimbriefView(
             flightPlan: FlightPlan(
                 origin: "EGCC",
-                destination: "EGJJ"
+                destination: "EGJJ",
+                costIndex: "54"
             )
         )
 

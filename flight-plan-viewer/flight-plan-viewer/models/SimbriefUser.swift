@@ -18,6 +18,7 @@ public final class MockData {
 struct FlightPlan {
     let origin: String
     let destination: String
+    let costIndex: String
 }
 
 class SimbriefUser {
@@ -43,7 +44,6 @@ class SimbriefUser {
     }
     
     public func fetchLatestFlightPlan (completionHandler: @escaping (_ result: FlightPlan) -> Void) async {
-        print("hello!")
         let mock = Mock(url: URL(string: simbriefUrl)!, dataType: .json, statusCode: 200, data: [
             .get: try! Data(contentsOf: MockData.simbriefFlightPlan)
         ])
@@ -57,7 +57,8 @@ class SimbriefUser {
             
             let flightPlan = FlightPlan(
                 origin: results.origin.icao_code,
-                destination: results.destination.icao_code
+                destination: results.destination.icao_code,
+                costIndex: results.general.costindex
             )
             completionHandler(flightPlan)
         }
