@@ -19,6 +19,7 @@ public final class MockData {
 struct Airport {
     let code: String
     let name: String
+    let location: CLLocationCoordinate2D
 }
 
 struct Waypoint {
@@ -52,7 +53,7 @@ struct ATCInfo {
 }
 
 struct RouteInfo {
-    let waypoints: [Waypoint]
+    var waypoints: [Waypoint]
 }
 
 struct FlightPlan {
@@ -100,8 +101,16 @@ class SimbriefUser {
                 return
             }
             
-            let origin = Airport(code: results.origin.icaoCode, name: results.origin.name)
-            let destination = Airport(code: results.destination.icaoCode, name: results.destination.name)
+            let origin = Airport(
+                code: results.origin.icaoCode,
+                name: results.origin.name,
+                location: CLLocationCoordinate2D(latitude: Double(results.origin.latitude)!, longitude: Double(results.origin.longitude)!)
+            )
+            let destination = Airport(
+                code: results.destination.icaoCode,
+                name: results.destination.name,
+                location: CLLocationCoordinate2D(latitude: Double(results.destination.latitude)!, longitude: Double(results.destination.longitude)!)
+            )
             
             let performanceInfo = PerformanceInfo(
                 costIndex: results.general.costIndex,
@@ -127,17 +136,17 @@ class SimbriefUser {
                 callsign: results.atc.callsign
             )
             
-            let routeInfo = RouteInfo(
+            var routeInfo = RouteInfo(
                 waypoints: results.navlog.waypoints
                     .map {
                         return Waypoint(
-                            name: $0.name.capitalized,
+                            name: $0.name,
                             location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!),
                             isSidOrStarWaypoint: Int($0.isSidOrStarWaypoint)! != 0
                         )
                     }
                     .filter {
-                        let namesToIgnore = ["Top Of Climb", "Top Of Descent"]
+                        let namesToIgnore = ["TOP OF CLIMB", "TOP OF DESCENT"]
                         
                         if namesToIgnore.contains($0.name) {
                             return false
@@ -150,6 +159,9 @@ class SimbriefUser {
                         return true
                     }
             )
+            
+            routeInfo.waypoints.insert(Waypoint(name: origin.name.capitalized, location: origin.location, isSidOrStarWaypoint: false), at: 0)
+            routeInfo.waypoints.append(Waypoint(name: destination.name.capitalized, location: destination.location, isSidOrStarWaypoint: false))
             
             let flightPlan = FlightPlan(
                 origin: origin,

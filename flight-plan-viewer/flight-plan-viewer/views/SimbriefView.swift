@@ -151,12 +151,20 @@ struct SimbriefView_Previews: PreviewProvider {
         let viewWithFlightPlan = SimbriefView(
             flightPlan: FlightPlan(
                 origin: Airport(
-                    code: "EGCC",
-                    name: "Manchester"
+                    code: "EGLC",
+                    name: "London City",
+                    location: CLLocationCoordinate2D(
+                        latitude: 51.505278,
+                        longitude: 0.055278
+                    )
                 ),
                 destination: Airport(
-                    code: "EGLC",
-                    name: "London City"
+                    code: "EGCC",
+                    name: "Manchester",
+                    location: CLLocationCoordinate2D(
+                        latitude: 53.353611,
+                        longitude: -2.275000
+                    )
                 ),
                 performanceInfo: PerformanceInfo(
                     costIndex: "54",
@@ -182,7 +190,15 @@ struct SimbriefView_Previews: PreviewProvider {
                 routeInfo: RouteInfo(
                     waypoints: [
                         Waypoint(
-                            name: "Brookmans Park",
+                            name: "London City",
+                            location: CLLocationCoordinate2D(
+                                latitude: 51.505278,
+                                longitude: 0.055278
+                            ),
+                            isSidOrStarWaypoint: false
+                        ),
+                        Waypoint(
+                            name: "BROOKMANS PARK",
                             location: CLLocationCoordinate2D(
                                 latitude: 51.749736,
                                 longitude: -0.106736
@@ -190,10 +206,18 @@ struct SimbriefView_Previews: PreviewProvider {
                             isSidOrStarWaypoint: false
                         ),
                         Waypoint(
-                            name: "Trent",
+                            name: "TRENT",
                             location: CLLocationCoordinate2D(
                                 latitude: 53.053953,
                                 longitude: -1.669969
+                            ),
+                            isSidOrStarWaypoint: false
+                        ),
+                        Waypoint(
+                            name: "Manchester",
+                            location: CLLocationCoordinate2D(
+                                latitude: 53.353611,
+                                longitude: -2.275000
                             ),
                             isSidOrStarWaypoint: false
                         )

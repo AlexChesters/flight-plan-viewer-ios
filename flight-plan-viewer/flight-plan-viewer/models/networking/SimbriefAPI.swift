@@ -64,10 +64,14 @@ struct SimbriefAPIFuelInfo: Decodable {
 struct SimbriefAPIAirportInfo: Decodable {
     let icaoCode: String
     let name: String
+    let latitude: String
+    let longitude: String
     
     private enum CodingKeys: String, CodingKey {
         case icaoCode = "icao_code"
         case name = "name"
+        case latitude = "pos_lat"
+        case longitude = "pos_long"
     }
 }
 
