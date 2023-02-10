@@ -10,7 +10,6 @@ import MapKit
 
 struct MapLineView: UIViewRepresentable {
     let region: MKCoordinateRegion
-//    let coordinates: [CLLocationCoordinate2D]
     let waypoints: [Waypoint]
 
     func makeUIView(context: Context) -> MKMapView {
