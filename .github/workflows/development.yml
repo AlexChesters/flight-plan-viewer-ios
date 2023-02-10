@@ -1,10 +1,12 @@
-name: Release
+name: Development
 
-# TODO: change this to on tags
-on: [push]
+on:
+  push:
+    branches:
+      - development
 
 jobs:
-  release:
+  Build and Release:
     runs-on: macOS-latest
 
     steps:
