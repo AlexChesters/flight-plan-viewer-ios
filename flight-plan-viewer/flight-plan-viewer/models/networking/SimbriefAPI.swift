@@ -74,10 +74,12 @@ struct SimbriefAPIAirportInfo: Decodable {
 struct SimbriefAPINavFix: Decodable {
     let latitude: String
     let longitude: String
+    let name: String
     
     private enum CodingKeys: String, CodingKey {
         case latitude = "pos_lat"
         case longitude = "pos_long"
+        case name = "name"
     }
 }
 

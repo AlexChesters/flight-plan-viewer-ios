@@ -22,6 +22,7 @@ struct Airport {
 }
 
 struct Waypoint {
+    let name: String
     let location: CLLocationCoordinate2D
 }
 
@@ -127,7 +128,10 @@ class SimbriefUser {
             
             let routeInfo = RouteInfo(
                 waypoints: results.navlog.waypoints.map {
-                    return Waypoint(location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!))
+                    return Waypoint(
+                        name: $0.name.capitalized,
+                        location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!)
+                    )
                 }
             )
             

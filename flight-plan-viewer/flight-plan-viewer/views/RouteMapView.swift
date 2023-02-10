@@ -10,15 +10,16 @@ import MapKit
 
 struct MapLineView: UIViewRepresentable {
     let region: MKCoordinateRegion
-    let coordinates: [CLLocationCoordinate2D]
+//    let coordinates: [CLLocationCoordinate2D]
+    let waypoints: [Waypoint]
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         mapView.region = region
         
-        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-        mapView.addOverlay(polyline)
+        addLines(to: mapView)
+        addAnnotations(to: mapView)
         
         return mapView
     }
@@ -27,6 +28,25 @@ struct MapLineView: UIViewRepresentable {
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
+    }
+    
+    private func addLines (to mapView: MKMapView) {
+        let coordinates = waypoints.map { return $0.location }
+        let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
+        mapView.addOverlay(polyline)
+    }
+    
+    private func addAnnotations(to mapView: MKMapView) {
+        mapView.removeAnnotations(mapView.annotations)
+        
+        let annotations = waypoints.map { waypoint -> MKPointAnnotation in
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = waypoint.location
+            annotation.title = waypoint.name
+            return annotation
+        }
+        
+        mapView.addAnnotations(annotations)
     }
 }
 
@@ -61,7 +81,7 @@ struct RouteMapView: View {
                     longitudeDelta: 10
                 )
             ),
-            coordinates: waypoints.map { return $0.location }
+            waypoints: waypoints
         )
     }
 }
@@ -75,15 +95,15 @@ struct RouteMapView_Previews: PreviewProvider {
                 longitude: -0.106736
             ),
             waypoints: [
-                // Brookmans Park
                 Waypoint(
+                    name: "Brookmans Park",
                     location: CLLocationCoordinate2D(
                         latitude: 51.749736,
                         longitude: -0.106736
                     )
                 ),
-                // Trent
                 Waypoint(
+                    name: "Trent",
                     location: CLLocationCoordinate2D(
                         latitude: 53.053953,
                         longitude: -1.669969

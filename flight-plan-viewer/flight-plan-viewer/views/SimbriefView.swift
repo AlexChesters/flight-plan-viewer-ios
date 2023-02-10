@@ -181,15 +181,15 @@ struct SimbriefView_Previews: PreviewProvider {
                 ),
                 routeInfo: RouteInfo(
                     waypoints: [
-                        // Brookmans Park
                         Waypoint(
+                            name: "Brookmans Park",
                             location: CLLocationCoordinate2D(
                                 latitude: 51.749736,
                                 longitude: -0.106736
                             )
                         ),
-                        // Trent
                         Waypoint(
+                            name: "Trent",
                             location: CLLocationCoordinate2D(
                                 latitude: 53.053953,
                                 longitude: -1.669969
