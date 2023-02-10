@@ -14,8 +14,10 @@ struct MapLineView: UIViewRepresentable {
 
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
+        
         mapView.delegate = context.coordinator
         mapView.region = region
+        mapView.mapType = .satellite
         
         addLines(to: mapView)
         addAnnotations(to: mapView)
