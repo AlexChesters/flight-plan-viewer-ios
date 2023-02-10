@@ -33,7 +33,7 @@ fileprivate struct FlightSummary: View {
         
         HStack {
             Image(systemName: "airplane")
-            Text("\(flightPlan.flightNumber) / \(flightPlan.callsign)")
+            Text("\(flightPlan.atcInfo.flightNumber) / \(flightPlan.atcInfo.callsign)")
                 .font(.headline)
             Image(systemName: "headphones")
         }
@@ -54,9 +54,9 @@ fileprivate struct PerformanceAndFuel: View {
                     .frame(maxWidth: 70, alignment: .leading)
             }
             VStack {
-                Text(verbatim: "\(flightPlan.zeroFuelWeight) \(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.landingWeight) \(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.payloadWeight) \(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.performanceInfo.zeroFuelWeight) \(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.performanceInfo.landingWeight) \(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.performanceInfo.payloadWeight) \(flightPlan.performanceInfo.weightUnits.rawValue)")
             }
             
             VStack {
@@ -66,9 +66,9 @@ fileprivate struct PerformanceAndFuel: View {
                     .frame(maxWidth: .infinity, alignment: .trailing)
             }
             VStack {
-                Text("\(flightPlan.costIndex)")
+                Text("\(flightPlan.performanceInfo.costIndex)")
                     .frame(maxWidth: 50, alignment: .trailing)
-                Text("\(flightPlan.cruisingAltitude)")
+                Text("\(flightPlan.performanceInfo.cruisingAltitude)")
                     .frame(maxWidth: 50, alignment: .trailing)
             }
         }
@@ -93,13 +93,13 @@ fileprivate struct PerformanceAndFuel: View {
                     .frame(maxWidth: 200, alignment: .leading)
             }
             VStack {
-                Text(verbatim: "\(flightPlan.taxiFuel)\(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.tripFuel)\(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.contingencyFuel)\(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.alternateFuel)\(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.reserveFuel)\(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.additionalFuel)\(flightPlan.weightUnits.rawValue)")
-                Text(verbatim: "\(flightPlan.minimumTakeOffFuel)\(flightPlan.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.taxiFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.tripFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.contingencyFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.alternateFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.reserveFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.additionalFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+                Text(verbatim: "\(flightPlan.fuelInfo.minimumTakeOffFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
             }
         }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -157,7 +157,7 @@ struct SimbriefView: View {
                 Spacer().frame(maxHeight: 30)
                 
                 RouteMap(
-                    center: flightPlan!.waypoints[0].location
+                    center: flightPlan!.routeInfo.waypoints[0].location
                 )
 
                 Divider()
@@ -180,23 +180,31 @@ struct SimbriefView_Previews: PreviewProvider {
                     code: "EGLC",
                     name: "London City"
                 ),
-                costIndex: "54",
-                cruisingAltitude: "FL180",
-                weightUnits: .kgs,
-                zeroFuelWeight: 28292,
-                landingWeight: 29751,
-                payloadWeight: 7592,
-                taxiFuel: 136,
-                tripFuel: 1011,
-                contingencyFuel: 140,
-                alternateFuel: 739,
-                reserveFuel: 580,
-                additionalFuel: 0,
-                minimumTakeOffFuel: 2470,
-                flightNumber: "BAW143",
-                callsign: "SHT4L",
-                // Trent VOR
-                waypoints: [Waypoint(location: CLLocationCoordinate2D(latitude: 53.053953, longitude: -1.669969))]
+                performanceInfo: PerformanceInfo(
+                    costIndex: "54",
+                    cruisingAltitude: "FL180",
+                    weightUnits: .kgs,
+                    zeroFuelWeight: 28292,
+                    landingWeight: 29751,
+                    payloadWeight: 7592
+                ),
+                fuelInfo: FuelInfo(
+                    taxiFuel: 136,
+                    tripFuel: 1011,
+                    contingencyFuel: 140,
+                    alternateFuel: 739,
+                    reserveFuel: 580,
+                    additionalFuel: 0,
+                    minimumTakeOffFuel: 2470
+                ),
+                atcInfo: ATCInfo(
+                    flightNumber: "BAW143",
+                    callsign: "SHT4L"
+                ),
+                routeInfo: RouteInfo(
+                    // Trent VOR
+                    waypoints: [Waypoint(location: CLLocationCoordinate2D(latitude: 53.053953, longitude: -1.669969))]
+                )
             )
         )
 
