@@ -134,7 +134,8 @@ struct SimbriefView: View {
                 Spacer().frame(maxHeight: 30)
                 
                 RouteMapView(
-                    center: flightPlan!.routeInfo.waypoints[0].location
+                    center: flightPlan!.routeInfo.waypoints[0].location,
+                    waypoints: flightPlan!.routeInfo.waypoints
                 )
 
                 Divider()
