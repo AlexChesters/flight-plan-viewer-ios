@@ -95,3 +95,6 @@ iOSInjectionProject/
 # built code
 *.xcarchive/
 fpv.ipa
+
+# editor stuff
+.vscode/
