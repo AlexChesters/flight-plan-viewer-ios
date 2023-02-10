@@ -1,0 +1,14 @@
+name: Release
+
+# TODO: change this to on tags
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build ipa
+        run: sh scripts/archive-to-ipa.sh
+
