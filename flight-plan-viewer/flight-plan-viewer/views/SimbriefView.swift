@@ -202,8 +202,22 @@ struct SimbriefView_Previews: PreviewProvider {
                     callsign: "SHT4L"
                 ),
                 routeInfo: RouteInfo(
-                    // Trent VOR
-                    waypoints: [Waypoint(location: CLLocationCoordinate2D(latitude: 53.053953, longitude: -1.669969))]
+                    waypoints: [
+                        // Brookmans Park
+                        Waypoint(
+                            location: CLLocationCoordinate2D(
+                                latitude: 51.749736,
+                                longitude: -0.106736
+                            )
+                        ),
+                        // Trent
+                        Waypoint(
+                            location: CLLocationCoordinate2D(
+                                latitude: 53.053953,
+                                longitude: -1.669969
+                            )
+                        )
+                    ]
                 )
             )
         )
