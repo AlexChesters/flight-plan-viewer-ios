@@ -1,3 +1,5 @@
 set -euo pipefail
 
-cp fpv.ipa ~/Library/Mobile\ Documents/com~apple~CloudDocs/fpv.ipa
+IPA_PATH=$1
+
+cp $IPA_PATH ~/Library/Mobile\ Documents/com~apple~CloudDocs/fpv.ipa
