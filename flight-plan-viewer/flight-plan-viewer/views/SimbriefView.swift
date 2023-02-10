@@ -16,7 +16,7 @@ fileprivate struct NoUserView: View {
     }
 }
 
-fileprivate struct FlightSummary: View {
+fileprivate struct FlightSummaryView: View {
     let flightPlan: FlightPlan
     
     var body: some View {
@@ -40,7 +40,7 @@ fileprivate struct FlightSummary: View {
     }
 }
 
-fileprivate struct PerformanceAndFuel: View {
+fileprivate struct PerformanceAndFuelView: View {
     let flightPlan: FlightPlan
     
     var body: some View {
@@ -106,29 +106,6 @@ fileprivate struct PerformanceAndFuel: View {
     }
 }
 
-fileprivate struct RouteMap: View {
-    let center: CLLocationCoordinate2D
-    
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(
-            latitude: 51.507222,
-            longitude: -0.1275
-        ),
-        span: MKCoordinateSpan(
-            latitudeDelta: 0.5,
-            longitudeDelta: 0.5
-        )
-    )
-    
-    var body: some View {
-        Map(coordinateRegion: $region)
-            .frame(width: .infinity, height: .infinity)
-            .onAppear {
-                region.center = center
-            }
-    }
-}
-
 struct SimbriefView: View {
     @EnvironmentObject var userController: UserController
     @State var flightPlan: FlightPlan?
@@ -146,17 +123,17 @@ struct SimbriefView: View {
                 }
         } else {
             VStack {
-                FlightSummary(flightPlan: flightPlan!)
+                FlightSummaryView(flightPlan: flightPlan!)
                 
                 Divider()
                 
                 Spacer().frame(maxHeight: 15)
                 
-                PerformanceAndFuel(flightPlan: flightPlan!)
+                PerformanceAndFuelView(flightPlan: flightPlan!)
                 
                 Spacer().frame(maxHeight: 30)
                 
-                RouteMap(
+                RouteMapView(
                     center: flightPlan!.routeInfo.waypoints[0].location
                 )
 
