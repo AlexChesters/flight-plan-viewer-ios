@@ -127,12 +127,17 @@ class SimbriefUser {
             )
             
             let routeInfo = RouteInfo(
-                waypoints: results.navlog.waypoints.map {
-                    return Waypoint(
-                        name: $0.name.capitalized,
-                        location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!)
-                    )
-                }
+                waypoints: results.navlog.waypoints
+                    .map {
+                        return Waypoint(
+                            name: $0.name.capitalized,
+                            location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!)
+                        )
+                    }
+                    .filter {
+                        let namesToIgnore = ["Top Of Climb", "Top Of Descent"]
+                        return !namesToIgnore.contains($0.name)
+                    }
             )
             
             let flightPlan = FlightPlan(
