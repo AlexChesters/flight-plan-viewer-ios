@@ -1,19 +1,27 @@
 set -euo pipefail
 
-ARCHIVE_PATH=$1
+rm -rf build/
+
+xcodebuild \
+  -project flight-plan-viewer/flight-plan-viewer.xcodeproj \
+  -scheme flight-plan-viewer \
+  -archivePath flight-plan-viewer.xcarchive archive \
+  CODE_SIGN_IDENTITY="" \
+  CODE_SIGNING_REQUIRED=NO
+
 TMP_BUILD_DIR_PATH="/tmp/flight-plan-viewer-$(date +"%Y-%m-%dT%H_%M_%S")"
 
-echo "[INFO] converting $ARCHIVE_PATH to .ipa"
+echo "[INFO] converting archive to .ipa"
 
-mkdir -p $TMP_BUILD_DIR_PATH/Payload
+mkdir -p build/Payload
 
-pushd $ARCHIVE_PATH
+pushd flight-plan-viewer.xcarchive
 
-cp -R Products/Applications/flight-plan-viewer.app $TMP_BUILD_DIR_PATH/Payload
+cp -R Products/Applications/flight-plan-viewer.app ../build/Payload
 
 popd
 
-pushd $TMP_BUILD_DIR_PATH
+pushd build
 zip -r fpv.zip .
-mv fpv.zip ~/Desktop/fpv.ipa
+mv fpv.zip ../fpv.ipa
 popd

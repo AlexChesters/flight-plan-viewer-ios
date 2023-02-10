@@ -91,3 +91,7 @@ iOSInjectionProject/
 
 # macOS stuff
 .DS_Store
+
+# built code
+*.xcarchive/
+fpv.ipa
