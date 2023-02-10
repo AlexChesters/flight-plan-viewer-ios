@@ -24,6 +24,7 @@ struct Airport {
 struct Waypoint {
     let name: String
     let location: CLLocationCoordinate2D
+    let isSidOrStarWaypoint: Bool
 }
 
 struct PerformanceInfo {
@@ -131,12 +132,22 @@ class SimbriefUser {
                     .map {
                         return Waypoint(
                             name: $0.name.capitalized,
-                            location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!)
+                            location: CLLocationCoordinate2D(latitude: Double($0.latitude)!, longitude: Double($0.longitude)!),
+                            isSidOrStarWaypoint: Int($0.isSidOrStarWaypoint)! != 0
                         )
                     }
                     .filter {
                         let namesToIgnore = ["Top Of Climb", "Top Of Descent"]
-                        return !namesToIgnore.contains($0.name)
+                        
+                        if namesToIgnore.contains($0.name) {
+                            return false
+                        }
+                        
+                        if $0.isSidOrStarWaypoint {
+                            return false
+                        }
+                        
+                        return true
                     }
             )
             

@@ -75,11 +75,13 @@ struct SimbriefAPINavFix: Decodable {
     let latitude: String
     let longitude: String
     let name: String
+    let isSidOrStarWaypoint: String
     
     private enum CodingKeys: String, CodingKey {
         case latitude = "pos_lat"
         case longitude = "pos_long"
         case name = "name"
+        case isSidOrStarWaypoint = "is_sid_star"
     }
 }
 

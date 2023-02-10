@@ -101,14 +101,16 @@ struct RouteMapView_Previews: PreviewProvider {
                     location: CLLocationCoordinate2D(
                         latitude: 51.749736,
                         longitude: -0.106736
-                    )
+                    ),
+                    isSidOrStarWaypoint: false
                 ),
                 Waypoint(
                     name: "Trent",
                     location: CLLocationCoordinate2D(
                         latitude: 53.053953,
                         longitude: -1.669969
-                    )
+                    ),
+                    isSidOrStarWaypoint: false
                 )
             ]
         )
