@@ -28,6 +28,7 @@ struct PerformanceInfo {
     let zeroFuelWeight: Int
     let landingWeight: Int
     let payloadWeight: Int
+    let passengerCount: Int
 }
 
 struct FuelInfo {
@@ -107,7 +108,8 @@ class SimbriefUser {
                 weightUnits: results.params.units,
                 zeroFuelWeight: Int(results.weights.zeroFuelWeight) ?? 0,
                 landingWeight: Int(results.weights.landingWeight) ?? 0,
-                payloadWeight: Int(results.weights.payloadWeight) ?? 0
+                payloadWeight: Int(results.weights.payloadWeight) ?? 0,
+                passengerCount: Int(results.general.passengers) ?? 0
             )
             
             let fuelInfo = FuelInfo(

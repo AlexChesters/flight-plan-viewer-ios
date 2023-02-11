@@ -21,11 +21,13 @@ struct SimbriefAPIGeneralInfo: Decodable {
     let costIndex: String
     let airline: String
     let flightNumber: String
+    let passengers: String
     
     private enum CodingKeys: String, CodingKey {
         case costIndex = "costindex"
         case airline = "icao_airline"
         case flightNumber = "flight_number"
+        case passengers = "passengers"
     }
 }
 

@@ -100,9 +100,16 @@ fileprivate struct PerformanceAndFuelView: View {
                 Text(verbatim: "\(flightPlan.fuelInfo.reserveFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
                 Text(verbatim: "\(flightPlan.fuelInfo.additionalFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
                 Text(verbatim: "\(flightPlan.fuelInfo.minimumTakeOffFuel)\(flightPlan.performanceInfo.weightUnits.rawValue)")
+            }    
+        }.frame(maxWidth: .infinity, alignment: .leading)
+        
+        Spacer().frame(maxHeight: 30)
+        
+        HStack {
+            VStack {
+                Text("Passengers: \(flightPlan.performanceInfo.passengerCount)")
             }
-        }
-            .frame(maxWidth: .infinity, alignment: .leading)
+        }.frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
@@ -172,7 +179,8 @@ struct SimbriefView_Previews: PreviewProvider {
                     weightUnits: .kgs,
                     zeroFuelWeight: 28292,
                     landingWeight: 29751,
-                    payloadWeight: 7592
+                    payloadWeight: 7592,
+                    passengerCount: 38
                 ),
                 fuelInfo: FuelInfo(
                     taxiFuel: 136,
