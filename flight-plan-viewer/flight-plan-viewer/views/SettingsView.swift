@@ -36,7 +36,7 @@ struct SettingsView: View {
                     )
                 }
                 
-                simbriefUser.refreshPilotId()
+                simbriefUser.pilotId = simbriefUsername
             } label: {
                 Text("Save")
             }
