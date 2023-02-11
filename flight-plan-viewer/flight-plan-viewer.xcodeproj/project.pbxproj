@@ -11,7 +11,7 @@
 		AC1E5680298C7BE70051F192 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1E567F298C7BE70051F192 /* Assets.xcassets */; };
 		AC1E5683298C7BE70051F192 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1E5682298C7BE70051F192 /* Preview Assets.xcassets */; };
 		AC1E568D298C7BE70051F192 /* flight_plan_viewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E568C298C7BE70051F192 /* flight_plan_viewerTests.swift */; };
-		AC1E56A8298C7CC30051F192 /* SimbriefUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56A7298C7CC30051F192 /* SimbriefUser.swift */; };
+		AC1E56A8298C7CC30051F192 /* FlightPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56A7298C7CC30051F192 /* FlightPlan.swift */; };
 		AC1E56AD298C7D570051F192 /* SimbriefView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56AC298C7D570051F192 /* SimbriefView.swift */; };
 		AC1E56B1298C7EE30051F192 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56B0298C7EE30051F192 /* SettingsView.swift */; };
 		AC1E56B3298C814E0051F192 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56B2298C814E0051F192 /* MainView.swift */; };
@@ -19,6 +19,7 @@
 		ACDED084298DB28F00773C16 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ACDED083298DB28F00773C16 /* Alamofire */; };
 		ACDED087298DB2BC00773C16 /* SimbriefAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */; };
 		ACDF307A29968B6B00A21DE4 /* RouteMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF307929968B6B00A21DE4 /* RouteMapView.swift */; };
+		ACDF307D2997B9AC00A21DE4 /* SimbriefUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF307C2997B9AC00A21DE4 /* SimbriefUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 		AC1E5682298C7BE70051F192 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC1E5688298C7BE70051F192 /* flight-plan-viewerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "flight-plan-viewerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC1E568C298C7BE70051F192 /* flight_plan_viewerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = flight_plan_viewerTests.swift; sourceTree = "<group>"; };
-		AC1E56A7298C7CC30051F192 /* SimbriefUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbriefUser.swift; sourceTree = "<group>"; };
+		AC1E56A7298C7CC30051F192 /* FlightPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightPlan.swift; sourceTree = "<group>"; };
 		AC1E56AC298C7D570051F192 /* SimbriefView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbriefView.swift; sourceTree = "<group>"; };
 		AC1E56B0298C7EE30051F192 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		AC1E56B2298C814E0051F192 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -46,6 +47,7 @@
 		AC4F9F43298DEEC20002B959 /* simbrief-flight-plan.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "simbrief-flight-plan.json"; sourceTree = "<group>"; };
 		ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbriefAPI.swift; sourceTree = "<group>"; };
 		ACDF307929968B6B00A21DE4 /* RouteMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView.swift; sourceTree = "<group>"; };
+		ACDF307C2997B9AC00A21DE4 /* SimbriefUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimbriefUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				AC4F9F42298DEE9A0002B959 /* mock-data */,
 				AC4F9F41298DEB880002B959 /* Info.plist */,
+				ACDF307B2997B99A00A21DE4 /* controllers */,
 				AC1E56A6298C7CBE0051F192 /* models */,
 				AC1E56A5298C7C9E0051F192 /* views */,
 				AC1E567B298C7BE40051F192 /* flight_plan_viewerApp.swift */,
@@ -130,7 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				ACDED085298DB2AF00773C16 /* networking */,
-				AC1E56A7298C7CC30051F192 /* SimbriefUser.swift */,
+				AC1E56A7298C7CC30051F192 /* FlightPlan.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -149,6 +152,14 @@
 				ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */,
 			);
 			path = networking;
+			sourceTree = "<group>";
+		};
+		ACDF307B2997B99A00A21DE4 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ACDF307C2997B9AC00A21DE4 /* SimbriefUser.swift */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,8 +275,9 @@
 				AC1E567C298C7BE40051F192 /* flight_plan_viewerApp.swift in Sources */,
 				ACDED087298DB2BC00773C16 /* SimbriefAPI.swift in Sources */,
 				ACDF307A29968B6B00A21DE4 /* RouteMapView.swift in Sources */,
+				ACDF307D2997B9AC00A21DE4 /* SimbriefUser.swift in Sources */,
 				AC1E56AD298C7D570051F192 /* SimbriefView.swift in Sources */,
-				AC1E56A8298C7CC30051F192 /* SimbriefUser.swift in Sources */,
+				AC1E56A8298C7CC30051F192 /* FlightPlan.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
