@@ -7,14 +7,7 @@
 
 import Foundation
 import Alamofire
-import Mocker
 import CoreLocation
-
-let simbriefUrl = "https://www.simbrief.com/api/xml.fetcher.php?username=shermheadryder&json=1"
-
-public final class MockData {
-    public static let simbriefFlightPlan: URL = Bundle(for: MockData.self).url(forResource: "simbrief-flight-plan", withExtension: "json")!
-}
 
 struct Airport {
     let code: String
@@ -73,7 +66,6 @@ class SimbriefUser {
     
     init() {
         let configuration = URLSessionConfiguration.af.default
-        configuration.protocolClasses = [MockingURLProtocol.self]
         sessionManager = Alamofire.Session(configuration: configuration)
         
         refreshPilotId()
@@ -90,10 +82,7 @@ class SimbriefUser {
     }
     
     public func fetchLatestFlightPlan (completionHandler: @escaping (_ result: FlightPlan) -> Void) async {
-        let mock = Mock(url: URL(string: simbriefUrl)!, dataType: .json, statusCode: 200, data: [
-            .get: try! Data(contentsOf: MockData.simbriefFlightPlan)
-        ])
-        mock.register()
+        let simbriefUrl = "https://www.simbrief.com/api/xml.fetcher.php?username=\(pilotId!)&json=1"
         
         sessionManager.request(simbriefUrl).responseDecodable(of: SimBriefAPIFlightPlan.self) { response in
             guard let results = response.value else {

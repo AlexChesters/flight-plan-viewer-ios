@@ -17,7 +17,6 @@
 		AC1E56B1298C7EE30051F192 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56B0298C7EE30051F192 /* SettingsView.swift */; };
 		AC1E56B3298C814E0051F192 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1E56B2298C814E0051F192 /* MainView.swift */; };
 		AC4F9F44298DEEC20002B959 /* simbrief-flight-plan.json in Resources */ = {isa = PBXBuildFile; fileRef = AC4F9F43298DEEC20002B959 /* simbrief-flight-plan.json */; };
-		AC4F9F47298DEF2D0002B959 /* Mocker in Frameworks */ = {isa = PBXBuildFile; productRef = AC4F9F46298DEF2D0002B959 /* Mocker */; };
 		ACDED084298DB28F00773C16 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ACDED083298DB28F00773C16 /* Alamofire */; };
 		ACDED087298DB2BC00773C16 /* SimbriefAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDED086298DB2BC00773C16 /* SimbriefAPI.swift */; };
 		ACDF307A29968B6B00A21DE4 /* RouteMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF307929968B6B00A21DE4 /* RouteMapView.swift */; };
@@ -57,7 +56,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACDED084298DB28F00773C16 /* Alamofire in Frameworks */,
-				AC4F9F47298DEF2D0002B959 /* Mocker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +180,6 @@
 			name = "flight-plan-viewer";
 			packageProductDependencies = (
 				ACDED083298DB28F00773C16 /* Alamofire */,
-				AC4F9F46298DEF2D0002B959 /* Mocker */,
 			);
 			productName = "flight-plan-viewer";
 			productReference = AC1E5678298C7BE40051F192 /* flight-plan-viewer.app */;
@@ -571,11 +568,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		AC4F9F46298DEF2D0002B959 /* Mocker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AC4F9F45298DEF2D0002B959 /* XCRemoteSwiftPackageReference "Mocker" */;
-			productName = Mocker;
-		};
 		ACDED083298DB28F00773C16 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = ACDED082298DB28F00773C16 /* XCRemoteSwiftPackageReference "Alamofire" */;
