@@ -12,10 +12,13 @@ struct MainView: View {
         TabView {
             SimbriefView()
                 .tabItem {
+                    Image(systemName: "list.bullet.clipboard")
                     Text("Simbrief")
+                    
                 }
             SettingsView()
                 .tabItem {
+                    Image(systemName: "gear")
                     Text("Settings")
                 }
         }
