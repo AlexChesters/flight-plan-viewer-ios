@@ -114,17 +114,17 @@ fileprivate struct PerformanceAndFuelView: View {
 }
 
 struct SimbriefView: View {
-    @EnvironmentObject var userController: UserController
+    @EnvironmentObject var simbriefUser: SimbriefUser
     @State var flightPlan: FlightPlan?
     
     @ViewBuilder
     var body: some View {
-        if userController.simbriefUser.pilotId == nil {
+        if simbriefUser.pilotId == nil {
             NoUserView()
         } else if flightPlan == nil {
             ProgressView()
                 .task {
-                    await userController.simbriefUser.fetchLatestFlightPlan() { response in
+                    await simbriefUser.fetchLatestFlightPlan() { response in
                         flightPlan = response
                     }
                 }
@@ -233,15 +233,15 @@ struct SimbriefView_Previews: PreviewProvider {
                 )
             )
         )
-
-        let userControllerWithSimbriefUser = UserController()
-        userControllerWithSimbriefUser.simbriefUser.pilotId = "foo"
+        
+        let simbriefUser = SimbriefUser()
+        simbriefUser.pilotId = "foo"
         
         return Group {
             viewWithoutSimbriefUser
-                .environmentObject(UserController())
+                .environmentObject(SimbriefUser())
             viewWithFlightPlan
-                .environmentObject(userControllerWithSimbriefUser)
+                .environmentObject(simbriefUser)
         }
     }
 }

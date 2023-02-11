@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct flight_plan_viewerApp: App {
-    @StateObject private var userController = UserController()
+    @StateObject private var simbriefUser = SimbriefUser()
     
     var body: some Scene {
         WindowGroup {
-            MainView().environmentObject(userController)
+            MainView().environmentObject(simbriefUser)
         }
     }
 }

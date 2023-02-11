@@ -10,7 +10,7 @@ import SwiftUI
 fileprivate let SIMBRIEF_USER_KEY = "username.simbrief"
 
 struct SettingsView: View {
-    @EnvironmentObject var userController: UserController
+    @EnvironmentObject var simbriefUser: SimbriefUser
     
     @AppStorage(SIMBRIEF_USER_KEY) private var simbriefUsername: String = ""
     
@@ -36,7 +36,7 @@ struct SettingsView: View {
                     )
                 }
                 
-                userController.simbriefUser.refreshPilotId()
+                simbriefUser.refreshPilotId()
             } label: {
                 Text("Save")
             }
@@ -49,6 +49,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView().environmentObject(SimbriefUser())
     }
 }

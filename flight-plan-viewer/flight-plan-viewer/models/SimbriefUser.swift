@@ -61,8 +61,8 @@ struct FlightPlan {
     let routeInfo: RouteInfo
 }
 
-class SimbriefUser {
-    var pilotId: String?
+class SimbriefUser: ObservableObject {
+    @Published var pilotId: String?
     private let sessionManager: Alamofire.Session
     
     init() {
